@@ -4,7 +4,7 @@ A visual drag-and-drop funnel builder for creating e-commerce sales funnels with
 
 ## 🚀 Live Demo
 
-[Deploy to Vercel/Netlify and add URL here]
+https://cartpanda-ashen.vercel.app/
 
 ## 🏃‍♂️ How to Run Locally
 
