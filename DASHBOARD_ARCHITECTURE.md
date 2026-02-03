@@ -330,4 +330,63 @@ Sentry.withScope((scope) => {
 4. **Automated rollbacks** on error thresholds
 5. **Blameless postmortems** improve processes
 
+## Pragmatic Implementation Strategy
+
+### Phase 1: MVP Foundation (Weeks 1-6)
+**Core Infrastructure:**
+- **Vite + React Router** - 2-day setup vs 1-week Next.js configuration
+- **Radix UI + Tailwind** - Pre-built accessibility, custom styling
+- **TanStack Query** - Server state with 5-line setup
+- **Zustand** - Global state in <100 lines
+- **Basic auth** - JWT + localStorage (upgrade to secure httpOnly later)
+
+**Essential Features (Priority Order):**
+1. **Orders management** - List, view, update status (Week 1-2)
+2. **Customer lookup** - Search, view profiles (Week 3)
+3. **Basic analytics** - Revenue, order counts (Week 4)
+4. **User management** - Admin roles, basic permissions (Week 5-6)
+
+**Acceptable Technical Debt:**
+- Client-side auth (no SSR needed initially)
+- Simple error handling with try/catch + toast
+- Manual API calls (no code generation)
+- Basic responsive design (mobile-friendly, not mobile-optimized)
+
+### Phase 2: Production Ready (Weeks 7-12)
+**Quality & Reliability:**
+- **Error boundaries** + Sentry integration
+- **Loading states** + skeleton screens
+- **Form validation** with react-hook-form + Zod
+- **E2E testing** for critical paths (Playwright)
+
+**Performance & Scale:**
+- **Virtual scrolling** when order tables >500 rows
+- **Code splitting** by route (React.lazy)
+- **Image optimization** + lazy loading
+- **Bundle analysis** + performance budgets
+
+**Developer Experience:**
+- **Storybook** for component documentation
+- **TypeScript strict mode** + proper error handling
+- **CI/CD pipeline** with automated testing
+- **Feature flags** for gradual rollouts
+
+### Migration Triggers (When to Upgrade):
+- **Next.js**: When SEO or SSR becomes critical (unlikely for admin dashboard)
+- **GraphQL**: When REST APIs become too chatty (>10 requests per page)
+- **Advanced auth**: When role-based permissions exceed 5 roles
+- **Microservices**: When team exceeds 8 developers
+
+### Risk Mitigation:
+- **Feature flags** allow instant rollbacks
+- **Database migrations** are reversible
+- **API versioning** prevents breaking changes
+- **Monitoring alerts** catch issues within 5 minutes
+
+### Success Metrics:
+- **Time to first page load**: <2s (Week 6 target)
+- **Developer onboarding**: <1 day (Week 8 target)
+- **Feature delivery**: 1 feature per week (sustained pace)
+- **Bug rate**: <5% of releases need hotfixes
+
 This architecture balances immediate productivity with long-term maintainability, ensuring the dashboard can evolve with Cartpanda's growth while maintaining high quality standards.
